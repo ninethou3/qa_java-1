@@ -14,26 +14,23 @@ import static org.junit.Assert.*;
 public class CatTest {
 
     @Mock
-    Feline feline;
-    @Mock
-    Cat cat = new Cat(feline);
+    Feline feline = new Feline();
 
     @Test
     public void getSoundTest() {
-        Mockito.when(cat.getSound()).thenReturn("Мяу");
+
+        Cat cat = new Cat(feline);
         String actual = cat.getSound();
         String expected = "Мяу";
         assertEquals(expected, actual);
     }
 
     @Test
-    public void getFoodTest() throws Exception {
+    public void testGetFood() throws Exception {
         Cat cat = new Cat(feline);
-        Mockito.when(cat.getFood()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> actual = cat.getFood();
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expected, actual);
     }
-
-
 }

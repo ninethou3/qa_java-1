@@ -14,12 +14,12 @@ import static org.junit.Assert.assertTrue;
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
     @Mock
-    Feline feline;
+    Feline feline = new Feline();
 
     @Test
     public void getKittensTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
-        Mockito.when(lion.getKittens()).thenReturn(1);
+        Mockito.when(feline.getKittens()).thenReturn(1);
         int actual = lion.getKittens();
         assertEquals(1, actual);
     }
@@ -38,8 +38,6 @@ public class LionTest {
         List<String> actual = lion.getFood();
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expected, actual);
-
-
     }
 
     @Test(expected = java.lang.Exception.class)
@@ -47,5 +45,4 @@ public class LionTest {
         Lion lion = new Lion("Нечто", feline);
         lion.doesHaveMane();
     }
-
 }
