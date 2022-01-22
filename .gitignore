@@ -1,3 +1,10 @@
+# idea files
+.idea
+
+target
+#кроме конкретной папки:
+!target/site
+
 # Compiled class file
 *.class
 
